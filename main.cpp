@@ -3,13 +3,17 @@
 //Descripion: Module 2 - ADT Assignments
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
+#include <iomanip>
 #include "input.h"
+#include "quadratic.h"
+#include "Statistician.h"
 
 using namespace std;
 
 // Function prototypes
 char displayMenu();
-char option1menu();
 char option2menu();
 char option3menu();
 char option4menu();
@@ -17,8 +21,8 @@ char option4menu();
 int main()
 {
     char option;
-
     bool running = true;
+	srand(time(0)); // Seed the random number generator
 
     while (running)
     {
@@ -28,38 +32,25 @@ int main()
         {
         case '1':
         {
-			bool option1Running = true; //flag to control the loop for option 1
-            while (option1Running)
+			system("cls");
+			Statistician stat; // Create an instance of the Statistician class
+            int size = inputInteger("\n\tEnter the number of random numbers to generate: ", 1, 100);
+			cout << "\n";
+            for (int i = 0; i < size; i++)
             {
-                char option1 = option1menu();
-                switch (option1)
-                {
-                case 'A':
-                    // Call the function to get largest
-                    break;
-                case 'B':
-                    // Call the function to get smallest
-                    break;
-                case 'C':
-                    // Call the function to get sum
-                    break;
-                case 'D':
-                    // Call the function to get mean
-                    break;
-                case '0':
-                    option1Running = false; // Exit the loop for option 1
-                    cout << "\n\n";
-                    system("pause");
-                    break;
-                default:
-                    cout << "Invalid option. Please try again." << "\n";
-                    break;
-                }
+                double number = (rand() % 20000 * 0.1) - 1000; // range from -1000 to 1000
+				stat.next_number(number); // Add the number to the Statistician object
+			    cout << "\t" << number << "\n";
 			}
-        }
+			cout << stat << "\n\n"; // Display the statistics using the overloaded << operator
+
+			stat.erase(); // Reset the Statistician object
+            system("pause");
+		}
             break;
         case '2':
         {
+            quadratic q; // Create an instance of the quadratic class
             bool option1Running = true;
             while (option1Running)
             {
@@ -67,31 +58,84 @@ int main()
                 switch (option1)
                 {
                 case 'D':
-                    // Call the function to display the expression
+                {
+					// Call the function to display the quadratic expression
+                    cout << "\n\t" << q.get_a() << "x^2 + " << q.get_b() << "x + " << q.get_c() << "\n\n";
+                }
 
+				system("pause");
                     break;
                 case 'A':
-                    // Call the function to set coefficient (a)
-
+                {
+					// Call the function to set coefficient (a)
+					double a_value = inputDouble("\n\tEnter a value and set coefficient (a): ", 0.0,100.0);
+					// Set the coefficient (a) of the quadratic expression
+					q.set_coefficients(a_value, q.get_b(), q.get_c());
+                }
+				cout << "\n\n";
+				system("pause");
+ 
                     break;
                 case 'B':
-                    // Call the function to set coefficient (b)
-
+                {
+					// Call the function to set coefficient (b)
+					double b_value = inputDouble("\n\tEnter a value and set coefficient (b): ", 0.0,100.0);
+					// Set the coefficient (b) of the quadratic expression
+					q.set_coefficients(q.get_a(), b_value, q.get_c());
+                }
+				cout << "\n\n";
+				system("pause");
+                    
                     break;
                 case 'C':
-                    // Call the function to set coefficient (c)
-
+                {
+					// Call the function to set coefficient (c)
+					double c_value = inputDouble("\n\tEnter a value and set coefficient (c): ", 0.0,100.0);
+					// Set the coefficient (c) of the quadratic expression
+					q.set_coefficients(q.get_a(), q.get_b(), c_value);
+                }
+				cout << "\n\n";
+				system("pause");
+ 
                     break;
                 case 'E':
+                {
                     // Call the function to get evaluation (x)
+                    double x_value = inputDouble("\n\tEnter a value of x: ");
+					// Evaluate the quadratic expression for the given value of x
+                    double result = q.evaluate(x_value);
+					cout << "\n\tEvaluation result: " << result << "\n\n";
+                }
+				system("pause");
 
                     break;
                 case 'N':
+                {
                     // Call the function to get the number of real roots
+                    int roots = q.number_of_real_roots();
+
+                    if (roots == 3)
+                        cout << "\n\tnumber of real roots: infinity\n";
+                    else
+                        cout << "\n\tnumber of real roots: " << roots << "\n\n";
+                }
+				system("pause");
 
                     break;
                 case 'R':
+                {
                     // Call the function to get real root(s)
+                    int roots = q.number_of_real_roots();
+                    if (roots == 0)
+                        cout << "\n\tNo real roots.\n\n";
+                    else if (roots == 1)
+                        cout << "\n\tReal root: " << q.real_root1() << "\n\n";
+                    else if (roots == 2)
+                        cout << "\n\tReal roots: " << q.real_root1() << " and " << q.real_root2() << "\n\n";
+                    else
+						cout << "\n\tevery value of x is a real root.\n\n";
+                }
+				system("pause");
 
                     break;
                 case '0':
@@ -117,7 +161,7 @@ int main()
                 switch (option2)
                 {
                 case 'A':
-                    // Call the function to get seed
+
                     break;
                 case 'B':
                     // Call the function to set seed
@@ -246,23 +290,6 @@ char displayMenu()
 	return option;
 }
 
-// Function to display the option 1 menu and get user input
-char option1menu()
-{
-    system("cls");
-    cout << "\n\t1> Statistician" << "\n";
-    cout << "\t" << string(80, char(205)) << "\n";
-    cout << "\t\tA. Largest " << "\n";
-    cout << "\t\tB. Smallest " << "\n";
-    cout << "\t\tC. Sum " << "\n";
-    cout << "\t\tD. Mean " << "\n";
-    cout << "\t" << string(80, char(196)) << "\n";
-    cout << "\t\t0. return" << "\n";
-    cout << "\t" << string(80, char(205)) << "\n";
-    char option = toupper(inputChar("\t\tOption: ", static_cast<string>("A,B,C,D,0")));
-    return option;
-}
-
 // Function to display the option 2 menu and get user input
 char option2menu()
 {
@@ -330,8 +357,3 @@ char option4menu()
     char option = toupper(inputChar("\t\tOption: ", static_cast<string>("A,B,C,D,E,F,G,H,I,J,0")));
     return option;
 }
-
-
-
-
-
