@@ -9,6 +9,7 @@
 #include "input.h"
 #include "quadratic.h"
 #include "Statistician.h"
+#include "Pseudorandom.h"
 
 using namespace std;
 
@@ -154,6 +155,8 @@ int main()
         }
         case '3':
         {
+            srand(time(0));
+            Pseudorandom test;
             bool option2Running = true;
             while (option2Running)
             {
@@ -161,49 +164,72 @@ int main()
                 switch (option2)
                 {
                 case 'A':
-
+                {
+                    cout << "\n\tSeed: " << test.getSeed();
+                }
                     break;
                 case 'B':
-                    // Call the function to set seed
+                {
+                    test.setSeed(inputInteger("\n\tEnter a value for seed: ", true));
+                }
                     break;
                 case 'C':
-                    // Call the function to get multiplier
+                {
+                    cout << "\n\tMultiplier: " << test.getMultiplier();
+                }
                     break;
                 case 'D':
-                    // Call the function to set multiplier
+                {
+                    test.setMultiplier(inputInteger("\n\tEnter a value for multiplier: ", true));
+                }
                     break;
                 case 'E':
-                    // Call the function to get modulus
+                {
+                    cout << "\n\tModulus: " << test.getModulus();
+                }
                     break;
                 case 'F':
-                    // Call the function to set modulus
+                {
+                    test.setModulus(inputInteger("\n\tEnter a value for modulus: ", true));
+                }
                     break;
                 case 'G':
-                    // Call the function to get increment
+                {
+                    cout << "\n\tIncrement: " << test.getIncrement();
+                }
                     break;
                 case 'H':
-                    // Call the function to set increment
+                {
+                    test.setIncrement(inputInteger("\n\tEnter a value for Increment: ", true));
+                }
                     break;
                 case 'I':
-                    // Call the function to get next number
+                {
+                    cout << "\n\tNext number: " << test.getNextNumber();
+                }
                     break;
                 case 'J':
-                    // Call the function to get indirect next number
+                {
+                    cout << "\n\tIndirect next number: " << test.getIndirectNextNumber();
+                }
                     break;
                 case 'K':
-                    // Call the function to run experiment with different values (multiplier, increment, and modulus)
+                {
+                    test.getExperimentResult();
+                }
                     break;
                 case '0':
                     option2Running = false; // Exit the loop for option 2
                     cout << "\n\n";
-                    system("pause");
                     break;
                 default:
                     cout << "Invalid option. Please try again." << "\n";
                     break;
                 }
+                system("pause");
             }
             break;
+
         }
 
 
