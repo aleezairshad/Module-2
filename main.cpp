@@ -55,8 +55,8 @@ int main()
             bool option1Running = true;
             while (option1Running)
             {
-                char option1 = option2menu();
-                switch (option1)
+                char option2 = option2menu();
+                switch (option2)
                 {
                 case 'D':
                 {
@@ -160,66 +160,88 @@ int main()
             bool option2Running = true;
             while (option2Running)
             {
-                char option2 = option3menu();
-                switch (option2)
+                char option3 = option3menu();
+                switch (option3)
                 {
                 case 'A':
                 {
+					// Call the function to get seed
                     cout << "\n\tSeed: " << test.getSeed();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'B':
                 {
+					// Call the function to set seed
                     test.setSeed(inputInteger("\n\tEnter a value for seed: ", true));
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'C':
                 {
+					// Call the function to get multiplier
                     cout << "\n\tMultiplier: " << test.getMultiplier();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'D':
                 {
+					// Call the function to set multiplier
                     test.setMultiplier(inputInteger("\n\tEnter a value for multiplier: ", true));
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'E':
                 {
+					// Call the function to get modulus
                     cout << "\n\tModulus: " << test.getModulus();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'F':
                 {
+					// Call the function to set modulus
                     test.setModulus(inputInteger("\n\tEnter a value for modulus: ", true));
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'G':
                 {
+					// Call the function to get increment
                     cout << "\n\tIncrement: " << test.getIncrement();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'H':
                 {
+					// Call the function to set increment
                     test.setIncrement(inputInteger("\n\tEnter a value for Increment: ", true));
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'I':
                 {
+					// Call the function to get next number
                     cout << "\n\tNext number: " << test.getNextNumber();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'J':
                 {
+					// Call the function to get indirect next number
                     cout << "\n\tIndirect next number: " << test.getIndirectNextNumber();
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case 'K':
                 {
-                    test.getExperimentResult();
+					// Call the function to run experiment with different values (multiplier, increment, and modulus)
+                    test.getExperimentResult(); 
+					cout << "\n\n";
                 }
-                    break;
+                break;
                 case '0':
-                    option2Running = false; // Exit the loop for option 2
+                    option2Running = false; // Exit the loop for option 3
                     cout << "\n\n";
                     break;
                 default:
