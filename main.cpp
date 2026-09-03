@@ -1,6 +1,6 @@
-//Name: Hany, Aleeza, and Tuniphn
+//Name: Hany, Aleeza, and Thanh
 // Date: 9/1/2026
-//Descripion: Module 2 - ADT Assignments
+//Description: Module 2 - ADT Assignments
 
 #include <iostream>
 #include <cstdlib>
@@ -10,6 +10,7 @@
 #include "quadratic.h"
 #include "Statistician.h"
 #include "Pseudorandom.h"
+#include "Rational.h"
 
 using namespace std;
 
@@ -23,32 +24,32 @@ int main()
 {
     char option;
     bool running = true;
-	srand(time(0)); // Seed the random number generator
+    srand(time(0)); // Seed the random number generator
 
     while (running)
     {
-		system("cls");
+        system("cls");
         option = displayMenu();
         switch (option)
         {
         case '1':
         {
-			system("cls");
-			Statistician stat; // Create an instance of the Statistician class
+            system("cls");
+            Statistician stat; // Create an instance of the Statistician class
             int size = inputInteger("\n\tEnter the number of random numbers to generate: ", 1, 100);
-			cout << "\n";
+            cout << "\n";
             for (int i = 0; i < size; i++)
             {
                 double number = (rand() % 20000 * 0.1) - 1000; // range from -1000 to 1000
-				stat.next_number(number); // Add the number to the Statistician object
-			    cout << "\t" << number << "\n";
-			}
-			cout << stat << "\n\n"; // Display the statistics using the overloaded << operator
+                stat.next_number(number); // Add the number to the Statistician object
+                cout << "\t" << number << "\n";
+            }
+            cout << stat << "\n\n"; // Display the statistics using the overloaded << operator
 
-			stat.erase(); // Reset the Statistician object
+            stat.erase(); // Reset the Statistician object
             system("pause");
-		}
-            break;
+        }
+        break;
         case '2':
         {
             quadratic q; // Create an instance of the quadratic class
@@ -60,56 +61,56 @@ int main()
                 {
                 case 'D':
                 {
-					// Call the function to display the quadratic expression
+                    // Call the function to display the quadratic expression
                     cout << "\n\t" << q.get_a() << "x^2 + " << q.get_b() << "x + " << q.get_c() << "\n\n";
                 }
 
-				system("pause");
-                    break;
+                system("pause");
+                break;
                 case 'A':
                 {
-					// Call the function to set coefficient (a)
-					double a_value = inputDouble("\n\tEnter a value and set coefficient (a): ", 0.0,100.0);
-					// Set the coefficient (a) of the quadratic expression
-					q.set_coefficients(a_value, q.get_b(), q.get_c());
+                    // Call the function to set coefficient (a)
+                    double a_value = inputDouble("\n\tEnter a value and set coefficient (a): ", 0.0, 100.0);
+                    // Set the coefficient (a) of the quadratic expression
+                    q.set_coefficients(a_value, q.get_b(), q.get_c());
                 }
-				cout << "\n\n";
-				system("pause");
- 
-                    break;
+                cout << "\n\n";
+                system("pause");
+
+                break;
                 case 'B':
                 {
-					// Call the function to set coefficient (b)
-					double b_value = inputDouble("\n\tEnter a value and set coefficient (b): ", 0.0,100.0);
-					// Set the coefficient (b) of the quadratic expression
-					q.set_coefficients(q.get_a(), b_value, q.get_c());
+                    // Call the function to set coefficient (b)
+                    double b_value = inputDouble("\n\tEnter a value and set coefficient (b): ", 0.0, 100.0);
+                    // Set the coefficient (b) of the quadratic expression
+                    q.set_coefficients(q.get_a(), b_value, q.get_c());
                 }
-				cout << "\n\n";
-				system("pause");
-                    
-                    break;
+                cout << "\n\n";
+                system("pause");
+
+                break;
                 case 'C':
                 {
-					// Call the function to set coefficient (c)
-					double c_value = inputDouble("\n\tEnter a value and set coefficient (c): ", 0.0,100.0);
-					// Set the coefficient (c) of the quadratic expression
-					q.set_coefficients(q.get_a(), q.get_b(), c_value);
+                    // Call the function to set coefficient (c)
+                    double c_value = inputDouble("\n\tEnter a value and set coefficient (c): ", 0.0, 100.0);
+                    // Set the coefficient (c) of the quadratic expression
+                    q.set_coefficients(q.get_a(), q.get_b(), c_value);
                 }
-				cout << "\n\n";
-				system("pause");
- 
-                    break;
+                cout << "\n\n";
+                system("pause");
+
+                break;
                 case 'E':
                 {
                     // Call the function to get evaluation (x)
                     double x_value = inputDouble("\n\tEnter a value of x: ");
-					// Evaluate the quadratic expression for the given value of x
+                    // Evaluate the quadratic expression for the given value of x
                     double result = q.evaluate(x_value);
-					cout << "\n\tEvaluation result: " << result << "\n\n";
+                    cout << "\n\tEvaluation result: " << result << "\n\n";
                 }
-				system("pause");
+                system("pause");
 
-                    break;
+                break;
                 case 'N':
                 {
                     // Call the function to get the number of real roots
@@ -120,9 +121,9 @@ int main()
                     else
                         cout << "\n\tnumber of real roots: " << roots << "\n\n";
                 }
-				system("pause");
+                system("pause");
 
-                    break;
+                break;
                 case 'R':
                 {
                     // Call the function to get real root(s)
@@ -134,11 +135,11 @@ int main()
                     else if (roots == 2)
                         cout << "\n\tReal roots: " << q.real_root1() << " and " << q.real_root2() << "\n\n";
                     else
-						cout << "\n\tevery value of x is a real root.\n\n";
+                        cout << "\n\tevery value of x is a real root.\n\n";
                 }
-				system("pause");
+                system("pause");
 
-                    break;
+                break;
                 case '0':
                     option1Running = false; // Exit the loop for option 1
                     cout << "\n\n";
@@ -165,79 +166,79 @@ int main()
                 {
                 case 'A':
                 {
-					// Call the function to get seed
+                    // Call the function to get seed
                     cout << "\n\tSeed: " << test.getSeed();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'B':
                 {
-					// Call the function to set seed
+                    // Call the function to set seed
                     test.setSeed(inputInteger("\n\tEnter a value for seed: ", true));
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'C':
                 {
-					// Call the function to get multiplier
+                    // Call the function to get multiplier
                     cout << "\n\tMultiplier: " << test.getMultiplier();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'D':
                 {
-					// Call the function to set multiplier
+                    // Call the function to set multiplier
                     test.setMultiplier(inputInteger("\n\tEnter a value for multiplier: ", true));
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'E':
                 {
-					// Call the function to get modulus
+                    // Call the function to get modulus
                     cout << "\n\tModulus: " << test.getModulus();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'F':
                 {
-					// Call the function to set modulus
+                    // Call the function to set modulus
                     test.setModulus(inputInteger("\n\tEnter a value for modulus: ", true));
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'G':
                 {
-					// Call the function to get increment
+                    // Call the function to get increment
                     cout << "\n\tIncrement: " << test.getIncrement();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'H':
                 {
-					// Call the function to set increment
+                    // Call the function to set increment
                     test.setIncrement(inputInteger("\n\tEnter a value for Increment: ", true));
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'I':
                 {
-					// Call the function to get next number
+                    // Call the function to get next number
                     cout << "\n\tNext number: " << test.getNextNumber();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'J':
                 {
-					// Call the function to get indirect next number
+                    // Call the function to get indirect next number
                     cout << "\n\tIndirect next number: " << test.getIndirectNextNumber();
-					cout << "\n\n";
+                    cout << "\n\n";
                 }
                 break;
                 case 'K':
                 {
-					// Call the function to run experiment with different values (multiplier, increment, and modulus)
-                    test.getExperimentResult(); 
-					cout << "\n\n";
+                    // Call the function to run experiment with different values (multiplier, increment, and modulus)
+                    test.getExperimentResult();
+                    cout << "\n\n";
                 }
                 break;
                 case '0':
@@ -258,44 +259,86 @@ int main()
 
         case '4':
         {
-			bool option3Running = true;
+            bool option3Running = true;
+            Rational R1, R2;
             while (option3Running)
             {
                 char option3 = option4menu();
                 switch (option3)
                 {
                 case 'A':
-                    // Call the function to enter values of rational number R1
+                {
+                    int numerator = inputInteger("\n\t\tEnter the value for the numerator: ");
+                    int denominator = inputInteger("\n\t\tEnter the value for the denominator: ");
+                    while (denominator == 0)
+                    {
+                        cout << "\t\tERROR: Denominator cannot be zero.\n";
+                        denominator = inputInteger("\n\t\tEnter the value for the denominator: ");
+                    }
+                    R1 = Rational(numerator, denominator);
+                    cout << "\n\n";
+                    system("pause");
                     break;
+                }
                 case 'B':
-                    // Call the function to display R1
+                    cout << "\n\t\tRational number R1: " << R1 << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'C':
-                    // Call the function to enter values for rational number R2
+                {
+                    int numerator = inputInteger("\n\t\tEnter the value for the numerator: ");
+                    int denominator = inputInteger("\n\t\tEnter the value for the denominator: ");
+                    while (denominator == 0)
+                    {
+                        cout << "\t\tERROR: Denominator cannot be zero.\n";
+                        denominator = inputInteger("\n\t\tEnter the value for the denominator: ");
+                    }
+                    R2 = Rational(numerator, denominator);
+                    cout << "\n\n";
+                    system("pause");
                     break;
+                }
                 case 'D':
-                    // Call the function to display R2
+                    cout << "\n\t\tRational number R2: " << R2 << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'E':
-                    // Call the function for multiplication of 2 rational numbers (R1 * R2)
+                    cout << "\n\t\tR1 * R2: " << (R1 * R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'F':
-                    // Call the function for division of 2 rational numbers (R1 / R2)
+                    if (R2.getNumerator() == 0)
+                        cout << "\n\t\tERROR: Cannot divide by zero.\n";
+                    else
+                        cout << "\n\t\tR1 / R2: " << (R1 / R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'G':
-                    // Call the function for addition of 2 rational numbers (R1 + R2)
+                    cout << "\n\t\tR1 + R2: " << (R1 + R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'H':
-                    // Call the function for subtraction of 2 rational numbers (R1 - R2)
+                    cout << "\n\t\tR1 - R2: " << (R1 - R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'I':
-                    // Call the function for (R1 == R2)
+                    cout << "\n\t\tR1 == R2: " << boolalpha << (R1 == R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case 'J':
-                    // Call the function for (R1 < R2)
+                    cout << "\n\t\tR1 < R2: " << boolalpha << (R1 < R2) << "\n";
+                    cout << "\n\n";
+                    system("pause");
                     break;
                 case '0':
-					option3Running = false; // Exit the loop for option 3
+                    option3Running = false; // Exit the loop for option 3
                     cout << "\n\n";
                     system("pause");
                     break;
@@ -303,7 +346,7 @@ int main()
                     cout << "Invalid option. Please try again." << "\n";
                     break;
                 }
-			}
+            }
 
             break;
         }
@@ -313,20 +356,20 @@ int main()
         default:
             cout << "Invalid option. Please try again." << "\n";
             break;
-		}
-        
+        }
+
 
     }
-	return 0;       
+    return 0;
 }
 
 // Function to display the main menu and get user input
 char displayMenu()
 {
-    cout << "\tCMPR131 Chapter2 - ADT Assignments by Hany, Aleeza, and Tuniphn  (9/1/2026)" << "\n";
+    cout << "\tCMPR131 Chapter2 - ADT Assignments by Hany, Aleeza, and Thanh  (9/1/2026)" << "\n";
     cout << "\t" << string(80, char(205));
     cout << "\n\t\t1> Statistician" << "\n";
-	cout << "\t\t2> Quadratic Expression" << "\n";
+    cout << "\t\t2> Quadratic Expression" << "\n";
     cout << "\t\t3> Pseudorandom" << "\n";
     cout << "\t\t4> Rational number" << "\n";
     cout << "\t" << string(80, char(196)) << "\n";
@@ -335,13 +378,13 @@ char displayMenu()
 
     char option = toupper(inputChar("\t\tOption: ", static_cast<string>("1,2,3,4,X")));
 
-	return option;
+    return option;
 }
 
 // Function to display the option 2 menu and get user input
 char option2menu()
 {
-	system("cls");
+    system("cls");
     cout << "\n\t2> Quadratic Menu" << "\n";
     cout << "\t" << string(80, char(205)) << "\n";
     cout << "\t\tD. display the expression" << "\n";
