@@ -141,6 +141,7 @@ double quadratic::real_root2() const
 
 }
 
+
 //precondition: NA
 //postcondition: return the sum of 2 quadratic expressions
 quadratic operator +(const quadratic& q1, const quadratic& q2)

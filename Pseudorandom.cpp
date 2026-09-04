@@ -101,15 +101,16 @@ double Pseudorandom::getIndirectNextNumber()
 void Pseudorandom::getExperimentResult()
 {
 	//random multiplier, increment, modulus  for experiment
-	multiplier = rand() % 100000 + 1;
+	multiplier = rand() % 100000 + 1; 
 	increment = rand() % 100000 + 1;
 	modulus = rand() % 100000 + 1;
 
 	
 	const int OCCURENCE = 10;
-	int occurenceCounter[OCCURENCE] = { 0 };
+	int occurenceCounter[OCCURENCE] = { 0 }; // Initialize the occurrence counter array to zero
 
 	const int FUNCTIONCALLS = 1000000;
+	// Generate pseudorandom numbers and count their occurrences in intervals
 	for (int i = 0; i < FUNCTIONCALLS; i++)
 	{
 		int interval = static_cast<int>(getIndirectNextNumber() * 10);
@@ -124,10 +125,11 @@ void Pseudorandom::getExperimentResult()
 
 	cout << "\n\tExperiment of pseudorandom with random multiplier, increment and modulus:\n";
 	cout << "\n\t" << string(80, char(196));
-
+	// Display the multiplier, increment, and modulus values used in the experiment
 	cout << "\n\tMultiplier = " << multiplier << ", increment = " << increment << ", modulus = " << modulus << "\n";
 
 	cout << "\n\t" << setw(20) << left << "Range" << right << "Number of Occurrences";
+	// Display the occurrences of pseudorandom numbers in intervals
 	for (int i = 0; i < OCCURENCE; i++)
 	{
 		if (i < 9)
@@ -145,7 +147,7 @@ void Pseudorandom::getExperimentResult()
 	const int MEANCOUNT = 10;
 	const double MEANCOUNT_DOUBLE = 10.0;
 	const double SUM_CONSTANT = 12.0;
-
+	// Generate MEANCOUNT uniformly distributed random numbers and calculate their sum
 	for (int i = 0; i < MEANCOUNT; i++)
 	{
 		sum += getIndirectNextNumber();
